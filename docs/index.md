@@ -178,4 +178,4 @@ Click the link to see the interactives map : [Population and landmarks in Colora
 		
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://github.com/Gustacro/AutoGIS_2019/tree/master/lesson_5/scripts) or contact support (<a href="mailto:someone@yoursite.com?subject=Mail from Our Site">Email Us</a>) and we’ll help you sort it out.
+Having trouble with Pages? Check out our [documentation](https://github.com/Gustacro/AutoGIS_2019/tree/master/lesson_5) or contact support (<a href="mailto:someone@yoursite.com?subject=Mail from Our Site">Email Us</a>) and we’ll help you sort it out.
