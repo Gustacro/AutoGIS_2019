@@ -7,24 +7,28 @@ Created on Sat Jan 16 09:57:51 2021
 
 # # # # STATIC MAPS IN GEOPANDAS # # # #
 
-# Basic Plotting 
+# Basic Plotting
 """
-Create a 3 layers static map: 
+Create a 3 layers static map:
     - Roads, metro lines (layers on top of each other)
 """
 # import modules
 import geopandas as gpd
 from pyproj import CRS
 import matplotlib.pyplot as plt
+import os, sys
 
-grid_fp = "data/TravelTimes_to_5975375_RailwayStation.shp"
-roads_fp = "data/roads.shp"
-metro_fp = "data/metro.shp"
+# Define root of the data
+root = r"D:/Gustavo/resource_center/RLIS"
+
+schools_fp = "PLACES/schools.shp"
+libraries_fp = "PLACES/library.shp"
+zipcodes_fp = r"C:\Users\gcolm\Documents\courses\online\online_courses\others\Geo_python_course\autoGIS_2019\lesson_5\data\pnw_schoolsPerZipcodes.shp"
 
 # Read files
-grid = gpd.read_file(grid_fp)
-roads = gpd.read_file(roads_fp)
-metro = gpd.read_file(metro_fp)
+schools = gpd.read_file(os.path.join(root, schools_fp))
+libraries = gpd.read_file(os.path.join(root, libraries_fp))
+zipcodes = gpd.read_file(zipcodes_fp)
 
 # Check coordinate system (CRS)
 # print(grid.crs)
@@ -39,84 +43,87 @@ metro = gpd.read_file(metro_fp)
 """ As we can see from previous print we got:
         Grid crs: ETRS89 / TM35FIN(E,N)
         Roads crs: KKJ / Finland zone 2
-        Metro crs: KKJ / Finland zone 2        
+        Metro crs: KKJ / Finland zone 2
 """
 
 # Let's re-project geometrics to ETRS89 / TM35FIN based on the grid layer
 # Reprojecting Geometries
-roads = roads.to_crs(crs=grid.crs)
-metro = metro.to_crs(crs=grid.crs)
+schools = schools.to_crs(crs=zipcodes.crs)
+libraries = libraries.to_crs(crs=zipcodes.crs)
 
-# Check if they have now the same crs 
-assert roads.crs == metro.crs == grid.crs, "Layer not in the same CRS"
+# Check if they have now the same crs
+assert schools.crs == libraries.crs == zipcodes.crs, "Layer not in the same CRS"
 
-# # # # PLOTTING.... # # # #
+# # # # PLOTTING 1.... # # # #
 
 # Create one subplot. Control figure and size
 fig, ax = plt.subplots(figsize=(12, 8))
-                  
+
 # Visualize the travel into 9 classes using "Quantiles" classification scheme
-grid.plot(ax=ax, column='car_m_t'
+zipcodes.plot(ax=ax, column='count'
           , linewidth=0.03
           , cmap="Spectral"
           , scheme="Quantiles"
-          , k=9
+          , k=6
           , alpha= 0.9
-          ) 
+          )
 
 # Add roads on top of the grid
 # use ax to define where is the layer to be rendered it
-roads.plot(ax=ax, color='grey', linewidth= 1.5)
+schools.plot(ax=ax, color='grey', linewidth= 0.1)
 
 # Add metro on top of previous map
-metro.plot(ax=ax, color='red', linewidth=2.5)
+libraries.plot(ax=ax, color='red', linewidth=0.1)
 
 # remove empty white space around axes
 plt.tight_layout()
 
 # save figure as png
-outfp = "staticMap_NoLgnd.png"
-plt.savefig(outfp, dpi= 300)
+# outfp = "/docs/staticMap_NoLgnd.png"
+# plt.savefig(outfp, dpi= 300)
 
-# # # # ADDING LEGEND TO THE PLOT # # # #
+
+# # # # -----------PLOTTING 2.... -----------# # # #
+
+# # # #---ADDING LEGEND------# # # #
 
 # Create one subplot. Control figure and size
 fig, ax = plt.subplots(figsize=(12, 8))
 
 # define legend
-lgnd_kwds = {'title':'Car Travel Time (min)'
+lgnd_kwds = {'title':'Schools Per Zipcode'
              , 'loc': 'upper left', 'bbox_to_anchor': (1, 1.01), 'ncol': 1}
 
 # Visualize the travel into 9 classes using "Quantiles" classification scheme
-grid.plot(ax=ax
-          , column='car_m_t'
+zipcodes.plot(ax=ax
+          , column='count'
           , cmap="Spectral"
           , linewidth=0.03
           , alpha= 0.9
           , scheme="Quantiles"
-          , k=9
+          , k=6
           , legend=True
-          ,legend_kwds=lgnd_kwds
-          ) 
+          , legend_kwds=lgnd_kwds
+          )
 
 # Add roads on top of the grid
 # use ax to define where is the layer to be rendered it
-roads.plot(ax=ax, color='grey', linewidth= 1.5)
+schools.plot(ax=ax, color='yellow', linewidth= 0.02)
 
-# Add metro on top of previous map
-metro.plot(ax=ax, color='red', linewidth=2.5)
+# # Add metro on top of previous map
+# libraries.plot(ax=ax, color='blue', linewidth=0.1)
 
 # Add title to the plot
-plt.title("Car: Travel time from Rail Station in Helsinki")
+plt.title("School in the PNW per Zipcode")
 # remove empty white space around axes
 plt.tight_layout()
 
 # save figure as png
-outfp = "staticMap_WLgnd.png"
+outfp = "C:/Users/gcolm/Documents/courses/online/online_courses/others/Geo_python_course/autoGIS_2019/lesson_5/SchoolsPerZipcode.png"
 plt.savefig(outfp, dpi= 300)
 
 """
-Note: if not defined lgnd_kwds variable with dict arguments for legend_kwds= lgnd_kwds parameter in grid.plot, 
+Note: if not defined lgnd_kwds variable with dict arguments for legend_kwds= lgnd_kwds parameter in grid.plot,
 you can define legend parameter by invoquing the following
 """
 # Re-position the legend and set a title
@@ -127,7 +134,7 @@ you can define legend parameter by invoquing the following
 # import contextily
 import contextily as ctx # Adding basemaps from different providers
 """
-Note: To add map tiles from providers such as "OpenStreetMap" & "Stamen Design" use contextily. Map tiles are 
+Note: To add map tiles from providers such as "OpenStreetMap" & "Stamen Design" use contextily. Map tiles are
         typically distributed in Web Mercator projection (EPSG:3857), - is often necessary re-project all spatial data
         into (Web Mercator) before visualizing data
 """
@@ -140,7 +147,7 @@ Note: To add map tiles from providers such as "OpenStreetMap" & "Stamen Design" 
 
 
 
-  
+
 
 
 
