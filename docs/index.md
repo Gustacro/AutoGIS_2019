@@ -95,7 +95,7 @@ To show the employment rate in Finland in the year 2013.
 	output = "path_to_directory/map_name.html"`
 	m.save(output)
 	```
-Click the link to see the interactives map : [Employment Rate in Finland 2013](https://gustacro.github.io/AutoGIS_2019/PNW_schoolsPerZipcode.html)
+Click the link to see the interactives map : [Employment Rate in Finland 2013](https://gustacro.github.io/AutoGIS_2019/joinAttr&GeomChoroplethMap.html)
 
 
 ### Population and Historic Landmarks in Colorado, USA map
