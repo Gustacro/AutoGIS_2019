@@ -43,7 +43,7 @@ To show the distribution of public and private schools in the Pacific Northwest.
 - Add geodataframes as layers in order bottom to top.
 - Plot and save as PNG.
 
-Click the link to see the static map : [Schools per Zipcodes in PNW](https://github.com/Gustacro/AutoGIS_2019/blob/master/docs/SchoolsPerZipcode.png)
+Click the link to see the static map : [Schools per Zipcodes in PNW](https://gustacro.github.io/AutoGIS_2019/SchoolsPerZipcode.png)
 
 ### Join Attributes and Geometries in Choropleth map
 **Name** : 
@@ -95,7 +95,7 @@ To show the employment rate in Finland in the year 2013.
 	output = "path_to_directory/map_name.html"`
 	m.save(output)
 	```
-Click the link to see the interactives map : [Employment Rate in Finland 2013](https://github.com/Gustacro/AutoGIS_2019/blob/master/docs/PNW_schoolsPerZipcode.html)
+Click the link to see the interactives map : [Employment Rate in Finland 2013](https://gustacro.github.io/AutoGIS_2019/PNW_schoolsPerZipcode.html)
 
 
 ### Population and Historic Landmarks in Colorado, USA map
@@ -173,7 +173,7 @@ To show population per neighborhood and landmarks in Colorado, USA.
 	- `output = "path_to_directory/map_name.html"`
 	- `m.save(output)`
 
-Click the link to see the interactives map : [Employment Rate in Finland 2013](https://github.com/Gustacro/AutoGIS_2019/blob/master/docs/cluster_landmarks_Denver.html)
+Click the link to see the interactives map : [Population and landmarks in Colorado, USA](https://gustacro.github.io/AutoGIS_2019/cluster_landmarks_Denver.html)
 
 		
 ### Support or Contact
