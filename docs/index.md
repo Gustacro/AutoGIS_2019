@@ -13,13 +13,13 @@ offered by the [Masters program in Geography](https://www.helsinki.fi/en/admissi
 - Finland Districts
 
 ### Libraries used:
-- Pandas
-- NumPy
-- Geopandas
-- PyProj
-- Folium
-- Branca
-- Matplotlib
+- [Pandas](https://pandas.pydata.org/pandas-docs/version/0.15/tutorials.html)
+- [NumPy](https://numpy.org/doc/stable/user/quickstart.html)
+- [Geopandas](https://geopandas.org/)
+- [PyProj](https://pyproj4.github.io/pyproj/stable/)
+- [Folium](https://python-visualization.github.io/folium/)
+- [Branca](https://python-visualization.github.io/branca/index.html)
+- [Matplotlib](https://matplotlib.org/3.3.3/tutorials/index.html)
 
 
 ### Static map
