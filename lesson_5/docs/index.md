@@ -16,8 +16,9 @@ In order to access the files via the links, you need to set the repository as pu
 
 Edit the text below and add links to the maps that you have created:
 
- - [My static map](https://autogis-2020.github.io/exercise-5-OulaIn/forum_traveltime.png)
- - [My interactive map](https://autogis-2020.github.io/exercise-5-OulaIn/accidents_map.html)
+## Static Maps:
+ - [Schools per zipcodes](https://github.com/Gustacro/AutoGIS_2019/tree/master/lesson_5/docs/SchoolsPerZipcode.png)
  
- You can check syntax for formatting the links in here: 
- - [Link to test map](https://autogis-2020.github.io/exercise-5-VuokkoH/test_map.html)
+## Interactive maps:
+ - [PNW Schools per zipcodes](https://github.com/Gustacro/AutoGIS_2019/tree/master/lesson_5/docs/PNW_schoolsPerZipcode.html)
+ 
