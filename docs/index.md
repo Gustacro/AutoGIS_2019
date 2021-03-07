@@ -1,4 +1,4 @@
-## Welcome to my first attempt of GitHub Page
+## Web Interactive Maps with Geopandas
 
 Here you will find some of the maps that I have created using [Geopandas](https://geopandas.org/) and the free course [Automating GIS-Processes](https://autogis-site.readthedocs.io/en/latest/index.html), 
 offered by the [Masters program in Geography](https://www.helsinki.fi/en/admissions/degree-programmes/geography-masters-programme) at Helsinki University.
